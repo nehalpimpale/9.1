@@ -33,15 +33,88 @@ Q2.What are advantages of pig over MapReduce?
 
 Advantages
 
-1.Decrease in development time. This is the biggest advantage especially considering vanilla map-reduce jobs' complexity, time-spent and maintenance of the programs.
+1.Decrease in development time. 
 
-2.Learning curve is not steep, anyone who does not know how to write vanilla map-reduce or SQL for that matter could pick up and can write map-reduce jobs; not easy to master, though.
+2.Learning curve is not steep, anyone who does not know how to write map-reduce or SQL can write map-reduce job using pig.
 
-3.Procedural, not declarative unlike SQL, so easier to follow the commands and provides better expressiveness in the transformation of data every step. Comparing to vanilla map-reduce, it is much more like an english language. It is concise and unlike Java but more like Python.
-I really liked the idea of dataflow where everything is about data even though we sacrifice control structures like for loop or if structures. This enforces the developer to think about the data but nothing else. In Python or Java, you create the control structures(for loop and ifs) and get the data transformation as a side effect. In here, data and because of data, data transformation is a first class citizen. Without data, you cannot create for loops, you need to always transform and manipulate data. But if you are not transforming data, what are you doing in the very first place?
-Since it is procedural, you could control of the execution of every step. If you want to write your own UDF(User Defined Function) and inject in one specific part in the pipeline, it is straightforward.
-Speaking of UDFs, you could write your UDFs in Python thanks to Jython. How awesome is that!
-Lazy evaluation: unless you do not produce an output file or does not output any message, it does not get evaluated. This has an advantage in the logical plan, it could optimize the program beginning to end and optimizer could produce an efficient plan to execute.
-Enjoys everything that Hadoop offers, parallelization, fault-tolerancy with many relational database features.
-It is quite effective for unstructured and messy large datasets. Actually, Pig is one of the best tool to make the large unstructured data to structured.
-You have UDFs which you want to parallellize and utilize for large amounts of data, then you are in luck. Use Pig as a base pipeline where it does the hard work and you just apply your UDF in the step that you want.
+3.Procedural, not declarative unlike SQL, so easier to follow the commands. it is much more like an english language. It is easier to read for someone with a little SQL background. 
+
+4.Since it is procedural, you could control of the execution of every step. If you want to write your own UDF(User Defined Function) and inject in one specific part in the pipeline, it is straightforward.
+
+5.It could optimize the program beginning to end and optimizer could produce an efficient plan to execute.
+
+6.Enjoys everything that Hadoop offers, parallelization, fault-tolerancy with many relational database features.
+
+7.It is quite effective for unstructured and messy large datasets. Actually, Pig is one of the best tool to make the large unstructured data to structured.
+
+8.It's faster to write in Pig Latin because of the less number of lines.
+
+9.We don't have to import any libraries.  
+
+
+
+Q3.What is pig engine and what is its importance?
+
+Pig Engine : 
+
+To analyze data using Apache Pig, programmers need to write scripts using Pig Latin language. All these scripts are internally converted to Map and Reduce tasks. Apache Pig has a component known as Pig Engine that accepts the Pig Latin scripts as input and converts those scripts into MapReduce jobs
+
+Pig Engine Importance :
+
+Pig Engine acts as interpreter between Pig Latin Script and MapReduce Jobs. It creates environment to execute pig scripts into series of  mapreduce jobs in parallel manner.
+
+
+
+Q4.What are the modes of Pig execution?
+
+We can run Apache Pig in two modes, namely, Local Mode and HDFS mode.
+
+Local Mode
+
+In this mode, all the files are installed and run from your local host and local file system. There is no need of Hadoop or HDFS. This mode is generally used for testing purpose.
+
+MapReduce Mode
+
+MapReduce mode is where we load or process the data that exists in the Hadoop File System (HDFS) using Apache Pig. In this mode, whenever we execute the Pig Latin statements to process the data, a MapReduce job is invoked in the back-end to perform a particular operation on the data that exists in the HDFS.
+
+
+
+Q5.What is grunt shell in Pig?
+
+After invoking the Grunt shell, we can run your Pig scripts in the shell. In addition to that, there are certain useful shell and utility commands provided by the Grunt shell. The Grunt shell of Apache Pig is mainly used to write Pig Latin scripts.
+
+
+
+Q6.What are the features of Pig Latin language?
+
+Features of Pig :
+
+1.Apache Pig comes with the following features −
+
+2.Rich set of operators − It provides many operators to perform operations like join, sort, filer, etc.
+
+3.Ease of programming − Pig Latin is similar to SQL and it is easy to write a Pig script if you are good at SQL.
+
+4.Optimization opportunities − The tasks in Apache Pig optimize their execution automatically, so the programmers need to focus only on semantics of the language.
+
+5.Extensibility − Using the existing operators, users can develop their own functions to read, process, and write data.
+
+6.UDF’s − Pig provides the facility to create User-defined Functions in other programming languages such as Java and invoke or embed them in Pig Scripts.
+
+7.Handles all kinds of data − Apache Pig analyzes all kinds of data, both structured as well as unstructured. It stores the results in HDFS.
+
+
+
+Q7.Is Pig latin commands case sensitive?
+
+Pig is case sensitive as well as case insensitive.
+
+case sensitive : for alias, in-built functions, UDFs
+
+cas in-sensitive : operators like foreach,as etc
+
+
+
+Q8.What is a data flow language? 
+
+To access the external data, every language must follow many rules and regulations. The instructions are flowing through data by executing different control statements, but data doesn't get moved. Dataflow language can get a stream of data which passes from one instruction to another instruction to be processed. Pig can easily process those conditions, jumps, loops, process the data in efficient manner.
